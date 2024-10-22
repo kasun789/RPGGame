@@ -1,4 +1,4 @@
-public class NPC {
+public class NPC implements IObserver{
     private String name;
     private String role;
     private String status;
@@ -25,5 +25,10 @@ public class NPC {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    @Override
+    public void update(String questStatus) {
+        System.out.println(name + " notified of quest status change: " + questStatus);
     }
 }

@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.Random;
 
-public class Archer extends Character{
+public class Archer extends Character implements IObserver{
 
     public Archer(String name, int level) {
         setName(name);
@@ -57,5 +57,10 @@ public class Archer extends Character{
         setHealth(getHealth() + 10); // Increase health on level up
         setStrength(getStrength() + 5); // Increase strength on level up
         setAgility(getAgility() + 2);
+    }
+
+    @Override
+    public void update(String questStatus) {
+        System.out.println("Archer notified of quest status change: " + questStatus);
     }
 }

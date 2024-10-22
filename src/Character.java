@@ -1,4 +1,4 @@
-public abstract class Character {
+public abstract class Character implements IObserver{
     private String name;
     private int mana;
     private int health;
