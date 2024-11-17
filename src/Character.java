@@ -107,4 +107,17 @@ public abstract class Character implements IObserver{
     abstract void takeDamage(int grid, int damage);
     abstract void gainExperience(int xp);
     abstract void increaseStatus();
+
+    public void heal() {
+        this.health = this.health + 1;
+        System.out.println("Healing");
+    }
+
+    public void defend() {
+        System.out.println("Defending");
+    }
+
+    public void moveTo(int x, int y) {
+        System.out.println("Moving " + x + "to" + y);
+    }
 }

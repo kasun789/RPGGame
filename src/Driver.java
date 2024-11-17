@@ -57,12 +57,27 @@ public class Driver {
 
             Enemy enemy = null;
             enemy = EnemyFactory.createEnemy(enemies.get(currentLevel-1), currentLevel);
-
             //subscribe characters to quest
             questManager.subscribe(playerCharacter);
             questManager.changeQuestStatus("Quest Started", playerCharacter);
 
+            CommandInvoker invoker = new CommandInvoker();
+            Controller controller = new Controller();
+
+            // Map keys to commands
+            controller.mapKeyToCommand("A", new AttackCommand(playerCharacter, enemy));
+            controller.mapKeyToCommand("H", new HealCommand(playerCharacter));
+            controller.mapKeyToCommand("D", new DefendCommand(playerCharacter));
+            controller.mapKeyToCommand("M", new MoveCommand(playerCharacter, 1, 1)); //
+
             while (playerCharacter.getHealth() > 0 && enemy.getHealth() > 0) {
+                System.out.println("Choose Attack (A)");
+                System.out.println("Choose Heal (H)");
+                System.out.println("Choose Defend (D)");
+                System.out.println("Choose Move (M)");
+                String choise = scan.nextLine();
+                controller.handleInput(choise);
+
                 playerCharacter.attack(enemy);
 
                 //change the status
