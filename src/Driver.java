@@ -47,6 +47,33 @@ public class Driver {
         // Game loop for levels
         for (int currentLevel = 1; currentLevel <= 5; currentLevel++) {
             playerCharacter = buildCharacter(playerName, currentLevel);
+            WeaponItem sword = new WeaponItem("Sword", 10);
+            DefensiveItem shield = new DefensiveItem("Shield", 5);
+            UtilityItem potion = new UtilityItem("Health Potion", "Restores 20 HP");
+
+            // Add items to the character's inventory
+            playerCharacter.getInventory().addInventoryItem(sword);
+            playerCharacter.getInventory().addInventoryItem(shield);
+            playerCharacter.getInventory().addInventoryItem(potion);
+
+            // List items in the inventory
+            playerCharacter.getInventory().listInventoryItems();
+
+            // Equip items
+            playerCharacter.equipItem(sword);
+            playerCharacter.equipItem(shield);
+            playerCharacter.equipItem(potion);
+
+            // Display currently equipped items
+            playerCharacter.displayEquipment();
+
+            // Unequip an item and display again
+            playerCharacter.unequipItem("weapon");
+            playerCharacter.displayEquipment();
+
+            // List items in the inventory after unequipping
+            playerCharacter.getInventory().listInventoryItems();
+
             System.out.println("\n--- Level " + currentLevel + " ---");
 
             System.out.println("#############################################################################");
